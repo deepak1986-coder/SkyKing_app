@@ -1,8 +1,10 @@
 package com.skyking.skyking_app.cotroller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,13 +26,21 @@ public class ProductCotroller {
 		return productService.getAllProducts();
 	}
 
-	@GetMapping("/skyking/{id}")
+	@GetMapping("/id/{id}")
 	public Product getProductById(@PathVariable Long id) {
 		return productService.getProductById(id);
 	}
-	/*
-	 * @GetMapping("/name/{name}") public Product getProductByName(@PathVariable
-	 * String name) { return productService.getProductByNameProduct(name); }
-	 */
+
+	@GetMapping("/product/{name}")
+	public ResponseEntity<?> getProductByName(@PathVariable String name) {
+		Optional<Product> product = productService.getProductByNameProduct(name);
+		if (product.isPresent()) {
+			return ResponseEntity.ok(product.get());
+		} else {
+			return ResponseEntity.status(404).body("Hey Deepak Product not found");
+		}
+
+		// return productService.getProductByNameProduct(name);
+	}
 
 }

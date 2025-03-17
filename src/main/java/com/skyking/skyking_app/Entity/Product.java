@@ -8,20 +8,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-//@Table(name="product")
+@Table(name="product")
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long product_id;
-	@Column(name = "prod_code")
+	//@Column(name = "prod_code")
 	private Long prod_code;
 	@Column(name = "prod_name")
-	private String prod_name;
-	@Column(name = "prod_quantity")
+	private String name;
+	//@Column(name = "prod_quantity")
 	private Long prod_quantity;
-	@Column(name = "prod_discription")
+	//@Column(name = "prod_discription")
 	private String prod_discription;
-	@Column(name = "prod_price")
+	//@Column(name = "prod_price")
 	private Double prod_price;
 
 	public Long getProduct_id() {
@@ -40,12 +40,12 @@ public class Product {
 		this.prod_code = prod_code;
 	}
 
-	public String getProd_name() {
-		return prod_name;
+	public String getName() {
+		return name;
 	}
 
-	public void setProd_name(String prod_name) {
-		this.prod_name = prod_name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Long getProd_quantity() {
