@@ -37,7 +37,7 @@ public class ProductCotroller {
 		if (product.isPresent()) {
 			return ResponseEntity.ok(product.get());
 		} else {
-			return ResponseEntity.status(404).body("Hey Deepak Product not found");
+			return ResponseEntity.status(404).body("Hey Customer Product not found");
 		}
 
 		// return productService.getProductByNameProduct(name);
